@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEVEL CHECK</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f5f5f5;margin:0;padding:20px}
+.container{max-width:420px;margin:auto;background:#fff;padding:20px;border-radius:15px;box-shadow:0 0 10px rgba(0,0,0,.15)}
+h1{text-align:center}
+label{font-size:20px;font-weight:bold}
+input{width:100%;height:50px;font-size:22px;margin:8px 0 18px;padding-left:10px;box-sizing:border-box}
+button{width:100%;height:55px;font-size:22px;border:none;border-radius:10px;background:#1976d2;color:#fff;cursor:pointer}
+.result{margin-top:30px;text-align:center}
+#error{font-size:36px;font-weight:bold}
+#status{font-size:34px;font-weight:bold;margin-top:15px}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>LEVEL CHECK</h1>
+
+<label>a1</label>
+<input type="number" id="a1">
+
+<label>b1</label>
+<input type="number" id="b1">
+
+<label>a2</label>
+<input type="number" id="a2">
+
+<label>b2</label>
+<input type="number" id="b2">
+
+<button onclick="calculate()">คำนวณ</button>
+
+<div class="result">
+<div id="error">Error : 0 mm</div>
+<div id="status">-</div>
+</div>
+</div>
+
+<script>
+function calculate(){
+ const a1=Number(document.getElementById("a1").value);
+ const b1=Number(document.getElementById("b1").value);
+ const a2=Number(document.getElementById("a2").value);
+ const b2=Number(document.getElementById("b2").value);
+
+ const error=(a2+b1)-(a1+b2);
+
+ document.getElementById("error").textContent="Error : "+error+" mm";
+
+ const status=document.getElementById("status");
+ if(error>=-1 && error<=1){
+   status.textContent="✅ ผ่าน";
+   status.style.color="green";
+ }else{
+   status.textContent="❌ ไม่ผ่าน";
+   status.style.color="red";
+ }
+}
+</script>
+</body>
+</html>
